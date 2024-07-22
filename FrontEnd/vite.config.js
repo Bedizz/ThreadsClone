@@ -10,7 +10,7 @@ export default defineConfig({
     // Get rid of the CORS error
     proxy: {
       '/api': {
-        target: 'https://fooddelivery-backend-yuy8.onrender.com',
+        target: 'https://threads-clone-e135.onrender.com',
         changeOrigin: true,
         secure: false,
       }
