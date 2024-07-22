@@ -10,7 +10,7 @@ export default defineConfig({
     // Get rid of the CORS error
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'https://fooddelivery-backend-yuy8.onrender.com',
         changeOrigin: true,
         secure: false,
       }
