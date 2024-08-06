@@ -10,6 +10,7 @@ import {
 import { mode } from "@chakra-ui/theme-tools";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import { SocketContextProvider } from "./context/SocketContext";
 
 // ----- styling for dark mode -----
 
@@ -41,7 +42,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <ChakraBaseProvider theme={theme}>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+          <SocketContextProvider>
           <App />
+          </SocketContextProvider>
         </ChakraBaseProvider>
       </BrowserRouter>
     </RecoilRoot>

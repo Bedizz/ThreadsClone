@@ -20,6 +20,7 @@ export const UserPage = () => {
  
   
   const getPosts = async () => {
+    if(!user) return;
     setFechingPosts(true)
     try {
       const res= await fetch(`/api/posts/user/${username}`)
@@ -42,8 +43,7 @@ export const UserPage = () => {
   useEffect(() => {
     getPosts()
   }
-  ,[username,setPosts])
-  console.log("posts is here and it is recoil state", posts);
+  ,[username,setPosts,user])
 
   if(!user && loading) {
     return (

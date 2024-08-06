@@ -43,9 +43,7 @@ import { userAtom } from '../atoms/userAtoms'
           body: JSON.stringify(form)
         })
         const data = await res.json()
-        console.log(data)
         if(data.error) return showtoast("Error", data.error, "error")
-        console.log(data)
         localStorage.setItem("user-threads", JSON.stringify(data))
         setUser(data)
       } catch (error) {

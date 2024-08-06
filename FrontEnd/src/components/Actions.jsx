@@ -117,7 +117,7 @@ export const Actions =  ({ post }) => {
       // toggle the liked state of the post
       setLiked(!liked);
     } catch (error) {
-      console.log("====================================");
+      
       return showToast("Error", error.message, "error");
     } finally {
       setIsLiking(false);
