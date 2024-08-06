@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-		"dev": "set NODE_ENV=development && nodemon backend/server.js",
-		"start": "set NODE_ENV=production && node backend/server.js",
-   		 "build": "npm install && cd  frontend && npm install && npm run build"
+		"dev": "set NODE_ENV=development && nodemon Backend/server.js",
+		"start": "set NODE_ENV=production && node Backend/server.js",
+   		 "build": "npm install && cd  Frontend && npm install && npm run build"
   },
   "type": "module",
   "keywords": [],
