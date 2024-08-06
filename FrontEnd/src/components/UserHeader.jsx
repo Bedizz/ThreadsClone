@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Flex, Link, Menu, MenuButton, MenuItem, MenuList, Portal, Text, VStack, useToast } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, Link, Menu, MenuButton, MenuItem, MenuList, Portal, Text, Toast, VStack, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { BsInstagram } from "react-icons/bs";
 import { CgMoreO } from "react-icons/cg";
@@ -6,63 +6,27 @@ import { useRecoilValue } from "recoil";
 import { userAtom } from "../atoms/userAtoms";
 import { Link as RouterLink } from "react-router-dom";
 import { useShowToast } from "./hooks/useShowToast";
+import useFollowUnfollow from "./hooks/useFollowUnfollow";
 
 export default function UserHeader({user}) {
   const currentUser = useRecoilValue(userAtom); // this is the user logged in
-  const showToast = useShowToast();
-  // this following state is used to show the follow or unfollow button
-    const [following,setFollowing] = useState(user.followers.includes(currentUser?._id)) 
+  const {updating,following,handleFollow} = useFollowUnfollow(user)
+  
 
-    // this loading state is used to show the loading spinner when the user clicks the follow button
-    const [loading, setLoading] = useState(false) // dont forget to add this to the follow button
 
     const CopyUrl = () => {
         const url = window.location.href;
         navigator.clipboard.writeText(url).then(() => {
-            showToast("Link copied to clipboard")
+            Toast({
+                title: "Link copied",
+                status: "success",
+                duration: 2000,
+                isClosable: true,
+            })
         }
         )
     }
-    const handleFollow =async () => {
-      if(!currentUser) {
-        showToast("Please login to follow", "error")
-        return;
-      }
-      if(loading) return;
-      // this triggers the loading spinner with finally part
-      setLoading(true)
-      try {
-          const res = await fetch(`/api/users/follow/${user._id}`, {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json"}
 
-          })
-          const data = await res.json();
-          if(data.error) {
-            showToast("An error occured", "error")
-            return;
-          }
-
-      
-          if(following) {
-            showToast("Success", `Unfollowed ${user.name}`,  "success")
-            user.followers.pop(); //simulate removing from followers
-
-          } else {
-            showToast("Success", `Followed ${user.name}`,  "success")
-            user.followers.push(currentUser?._id) //simulate adding to followers
-          }
-          setFollowing(!following)
-          
-          
-      } catch (error) {
-        showToast("An error occured", "error")
-        
-      } finally {
-        setLoading(false)
-      }
-    }
 
 
   return (
@@ -104,7 +68,7 @@ export default function UserHeader({user}) {
       )}
       // if the user is not the current user, show the follow button
       {currentUser?._id !== user._id && (
-        <Button size={"sm"} onClick={handleFollow} isLoading={loading}>{ following ? "Unfollow" : "Follow"} </Button>
+        <Button size={"sm"} onClick={handleFollow} isLoading={updating}>{ following ? "Unfollow" : "Follow"} </Button>
       )}
 
       {/* --------------------- */}

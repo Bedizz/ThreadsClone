@@ -69,7 +69,7 @@ export const CreatePost = () => {
             console.log(data.error)
             return
         }
-        console.log(data)
+        
         showToast("Success","Post created successfully","success")
         if(username === user.username) {
           setPosts([data,...posts])

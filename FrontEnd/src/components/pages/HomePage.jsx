@@ -5,6 +5,7 @@ import { useShowToast } from "../hooks/useShowToast";
 import { Post } from "../Post";
 import { useRecoilState } from "recoil";
 import { postsAtom } from "../../atoms/postAtoms";
+import SuggestedUsers from "../SuggestedUsers";
 
 
 export default function Homepage() {
@@ -44,7 +45,9 @@ export default function Homepage() {
 
 
   return (
-    <>
+    // alignitems start is for the suggested users because it covers how many users we have and shapes itself accordingly
+    <Flex gap={"10"} alignItems={"start"}>
+    <Box flex={70}>
     <Flex gap='10' alignItems={"flex-start"}>
     <Box flex={70}>
     {loading && (
@@ -56,6 +59,15 @@ export default function Homepage() {
     {posts.map((post) => ( <Post key={post._id} post={post} postedBy={post.postedBy}  />  ))}
     </Box>
 		</Flex>
-    </>
+    </Box>
+    {/* // here we can hide the suggested users on mobile */}
+    <Box flex={30} border={"1px solid red"} display={{
+      base: "none",
+      md: "block",
+    }} >
+      <SuggestedUsers/>
+    </Box>
+
+    </Flex>
   );
 }

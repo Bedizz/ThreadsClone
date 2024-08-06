@@ -24,7 +24,7 @@ export const Post = ({ post,postedBy }) => {
   const currentUser = useRecoilValue(userAtom)
   const [posts,setPosts] = useRecoilState(postsAtom)
   const showToast= useShowToast();
-  console.log(user);
+
 
   
   const handleDeletePost = async (e) => {
