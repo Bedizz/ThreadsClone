@@ -61,7 +61,9 @@ export default function Homepage() {
 		</Flex>
     </Box>
     {/* // here we can hide the suggested users on mobile */}
+
     <Box flex={30} display={{
+
       base: "none",
       md: "block",
     }} >
