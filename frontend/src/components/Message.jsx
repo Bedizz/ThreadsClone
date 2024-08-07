@@ -66,7 +66,7 @@ const Message = ({ ownMessage, message }) => {
               <Image src={message.image}  alt="Message Image" borderRadius={4}/>              
             </Flex>
           )}
-
+            {/* <Avatar src={user.profilePic} w={7} h={7} /> */}
           
         </Flex>
         
