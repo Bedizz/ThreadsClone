@@ -1,8 +1,4 @@
-# 12+ Hour MERN Masterclass: Build and Deploy a Threads App with Real-Time Chat Functionality
-
-![Demo App](https://i.ibb.co/BnGdh10/Group-62.png)
-
-[Video Tutorial on Youtube](https://youtu.be/G4V4xO9wyD8)
+<Link href="https://threadsclone-1.onrender.com/">Here</Link> you can find deployed version of my project.It may take 50 seconds to start the server.
 
 Feature List:
 
