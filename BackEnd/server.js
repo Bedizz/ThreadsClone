@@ -10,8 +10,10 @@ import messageRouter from "./routes/messageRoutes.js"
 import {app,server} from "./socket/socket.js";
 
 
+
 // in order to use the .env file, we need to use the config method
 dotenv.config();
+
 
 connectDB();
 // in order to create a server, we need to use the express method
